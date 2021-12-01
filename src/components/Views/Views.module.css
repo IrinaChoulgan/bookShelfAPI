@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+}
+.thumb {
+  margin-left: 20px;
+}
+.title {
+  margin-bottom: 15px;
+}
+
+.list {
+  list-style-type: square;
+}

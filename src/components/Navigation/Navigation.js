@@ -13,6 +13,7 @@ const Navigation = () => (
     </NavLink>
     <NavLink
       to="/authors"
+      className="navbar"
       className={styles.link}
       activeClassName={styles.activeLink}
     >
@@ -20,6 +21,7 @@ const Navigation = () => (
     </NavLink>
     <NavLink
       to="/books"
+      className="navbar"
       className={styles.link}
       activeClassName={styles.activeLink}
     >

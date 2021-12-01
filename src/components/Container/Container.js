@@ -1,5 +1,6 @@
-import styles from '../Container/Container.module.css';
+// import styles from '../Container/Container.module.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Container({ children }) {
-  return <div className={styles.container}>{children}</div>;
+  return <div className="container">{children}</div>;
 }

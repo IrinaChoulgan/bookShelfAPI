@@ -1,6 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link, useRouteMatch, useLocation } from 'react-router-dom';
-import * as bookShelfAPI from '../services/bookshelf-api';
+import { useSelector, useDispatch } from 'react-redux';
+import * as booksOperations from '../redux/books/booksOperations';
+import * as booksSelectors from '../redux/books/booksSelectors';
 import PageHeading from '../PageHeading/PageHeading';
 import slugify from 'slugify';
 
@@ -8,18 +10,18 @@ const makeSlug = string => slugify(string, { lower: true });
 
 export default function BooksView() {
   const { url } = useRouteMatch();
-  const [books, setBooks] = useState(null);
   const location = useLocation();
-  console.log('BooksView', location);
+  const dispatch = useDispatch();
+  const books = useSelector(booksSelectors.getBooks)
 
   useEffect(() => {
-    bookShelfAPI.fetchBooks().then(setBooks);
-  }, []);
+    dispatch(booksOperations.fetchBooks())
+  }, [dispatch]);
 
   return (
     <>
       <PageHeading text="Книги" />
-      {books &&
+      {books.length > 0 &&
         books.map(book => (
           <li key={book.id}>
             <Link
